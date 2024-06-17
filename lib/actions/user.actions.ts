@@ -1,4 +1,4 @@
-"use server"
+
 
 "use server";
 
@@ -7,6 +7,22 @@ import { revalidatePath } from "next/cache";
 import User from "../database/models/user.model";
 import { connectToDatabase } from "../database/mongoose";
 import { handleError } from "../utils";
+
+interface user {
+  clerkId: string;
+  email: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  photo: string;
+}
+
+interface updatedUser {
+  firstName?: string;
+  lastName?: string;
+  username?: string;
+  photo?: string;
+}
 
 // CREATE
 export async function createUser(user: CreateUserParams) {
